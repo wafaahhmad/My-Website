@@ -8,6 +8,30 @@
 </head>
 
 <body>
+    <script>
+    document.getElementById("favBookForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        var selectedType = document.getElementById("bookType").value;
+        var allCategories = document.querySelectorAll(".category");
+        allCategories.forEach(function(section) {
+            section.style.display = "none";
+        });
+        var categoryMap = {
+            "رواية": 0,
+            "علمي": 1,
+            "تنمية بشرية": 2,
+            "قصص أطفال": 4
+        };
+
+        var index = categoryMap[selectedType];
+        if (index !== undefined) {
+            allCategories[index].style.display = "block";
+        }
+        var name = document.getElementById("userName").value;
+        alert("أهلاً " + name + "! عرضنا لك كتب: " + selectedType);
+    });
+</script>
     <header>
         <h1>مكتبة الكتب</h1>
     </header>
@@ -174,30 +198,6 @@
         <button type="submit">إرسال</button>
     </form>
 </div>
-<script>
-    document.getElementById("favBookForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        var selectedType = document.getElementById("bookType").value;
-        var allCategories = document.querySelectorAll(".category");
-        allCategories.forEach(function(section) {
-            section.style.display = "none";
-        });
-        var categoryMap = {
-            "رواية": 0,
-            "علمي": 1,
-            "تنمية بشرية": 2,
-            "قصص أطفال": 4
-        };
-
-        var index = categoryMap[selectedType];
-        if (index !== undefined) {
-            allCategories[index].style.display = "block";
-        }
-        var name = document.getElementById("userName").value;
-        alert("أهلاً " + name + "! عرضنا لك كتب: " + selectedType);
-    });
-</script>
 
 </body>
 
